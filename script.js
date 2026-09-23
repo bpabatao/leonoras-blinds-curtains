@@ -1,59 +1,59 @@
 const projects = [
   {
     image: 'assets/images/office-zebra-blinds.jpg',
-    alt: 'Zebra blinds fitted in a Calamba office',
+    alt: 'Zebra blinds across an office window',
     category: 'Zebra blinds',
-    title: 'A considered office, with light in balance',
-    location: 'Calamba, Laguna',
+    title: 'Office zebra blinds',
+    room: 'Office',
   },
   {
     image: 'assets/images/grey-living-room-curtains.jpg',
     alt: 'Grey pleated curtains and white sheers in a living room',
     category: 'Curtains',
-    title: 'Soft layers for a modern living room',
-    location: 'Calamba, Laguna',
+    title: 'Living room curtains and sheers',
+    room: 'Living room',
   },
   {
     image: 'assets/images/gym-zebra-blinds.jpg',
-    alt: 'Zebra blinds fitted across the windows of a home gym',
+    alt: 'Zebra blinds across the windows of a home gym',
     category: 'Zebra blinds',
-    title: 'Light and privacy for a home gym',
-    location: 'Calamba, Laguna',
+    title: 'Home gym zebra blinds',
+    room: 'Home gym',
   },
   {
     image: 'assets/images/stairwell-curtains.jpg',
-    alt: 'Layered curtains and sheers surrounding a stairwell',
+    alt: 'Curtains and sheers beside a stairwell',
     category: 'Curtains',
-    title: 'A graceful line through the stairwell',
-    location: 'Calamba, Laguna',
+    title: 'Stairwell curtains',
+    room: 'Stairwell',
   },
   {
     image: 'assets/images/marble-room-roller-blind.jpg',
     alt: 'Light roller blind mounted against a marble tiled wall',
     category: 'Roller blinds',
-    title: 'A crisp finish for a marble-lined room',
-    location: 'Calamba, Laguna',
+    title: 'Roller blind',
+    room: 'Marble-tiled room',
   },
   {
     image: 'assets/images/warm-bedroom-curtains.jpg',
     alt: 'Warm neutral curtains and sheers framing a bedroom window',
     category: 'Curtains',
-    title: 'Warm neutrals, made for rest',
-    location: 'Calamba, Laguna',
+    title: 'Bedroom curtains and sheers',
+    room: 'Bedroom',
   },
   {
     image: 'assets/images/bedroom-curtains.jpg',
     alt: 'Neutral curtains and sheer panels layered around a bedroom window',
     category: 'Curtains',
-    title: 'A bedroom window, softly finished',
-    location: 'Calamba, Laguna',
+    title: 'Bedroom sheer curtains',
+    room: 'Bedroom',
   },
   {
     image: 'assets/images/corner-room-curtains.jpg',
     alt: 'Curtains and sheers arranged around windows in a corner room',
     category: 'Curtains',
-    title: 'A complete finish for corner windows',
-    location: 'Calamba, Laguna',
+    title: 'Corner-room curtains',
+    room: 'Corner room',
   },
 ];
 
@@ -62,7 +62,7 @@ const galleryFeature = document.querySelector('#gallery-feature');
 const galleryImage = document.querySelector('#gallery-image');
 const galleryCategory = document.querySelector('#gallery-category');
 const galleryTitle = document.querySelector('#gallery-title');
-const galleryLocation = document.querySelector('#gallery-location');
+const galleryRoom = document.querySelector('#gallery-location');
 const currentSlide = document.querySelector('#current-slide');
 const slideTotal = document.querySelector('#slide-total');
 const galleryProgress = document.querySelector('#gallery-progress');
@@ -96,10 +96,10 @@ function showProject(index) {
     galleryImage.alt = project.alt;
     galleryCategory.textContent = project.category;
     galleryTitle.textContent = project.title;
-    galleryLocation.textContent = project.location;
+    galleryRoom.textContent = project.room;
     currentSlide.textContent = String(selectedProject + 1).padStart(2, '0');
     galleryFeature.setAttribute('aria-label', `Installation ${selectedProject + 1} of ${projects.length}`);
-    galleryLive.textContent = `${project.category}: ${project.title}, ${project.location}.`;
+    galleryLive.textContent = `${project.title}. ${project.category}, ${project.room}.`;
     galleryProgress.setAttribute('aria-valuenow', String(selectedProject + 1));
     galleryProgress.firstElementChild.style.width = `${((selectedProject + 1) / projects.length) * 100}%`;
     projectButtons.forEach((button, buttonIndex) => {
@@ -124,7 +124,7 @@ function showProject(index) {
 function updateLightbox(project) {
   lightboxImage.src = project.image;
   lightboxImage.alt = project.alt;
-  lightboxCaption.textContent = `${project.category} | ${project.location}`;
+  lightboxCaption.textContent = `${project.category} | ${project.room}`;
 }
 
 projectButtons.forEach((button, index) => {
