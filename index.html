@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Custom curtains, blinds, and home soft furnishings in Calamba, Laguna."
+    />
+    <title>Leonora's Blinds & Curtains | Calamba</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono&family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+      <a class="wordmark" href="#top" aria-label="Leonora's Blinds and Curtains home">
+        <span>Leonora's</span>
+        <small>Blinds &amp; Curtains</small>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        Menu
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+        <a href="#services">Services</a>
+        <a href="#work">Recent work</a>
+        <a href="#inquire">Inquire</a>
+      </nav>
+      <a class="header-cta" href="#inquire">Request a quote <span aria-hidden="true">↗</span></a>
+    </header>
+
+    <main id="main-content">
+      <section id="top" class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Calamba, Laguna</p>
+          <h1>Made for the<br /><em>way you live.</em></h1>
+          <p class="hero-intro">
+            Custom window treatments and soft furnishings that bring calm, privacy, and a finished feeling to your home.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-dark" href="#inquire">Start your project <span aria-hidden="true">→</span></a>
+            <a class="text-link" href="#work">View recent work <span aria-hidden="true">↓</span></a>
+          </div>
+        </div>
+        <figure class="hero-image-wrap">
+          <img
+            src="assets/images/warm-bedroom-curtains.jpg"
+            alt="Warm neutral curtains and sheers installed in a bright room"
+            width="1600"
+            height="1200"
+          />
+          <figcaption>
+            <span>EST.</span>
+            <strong>Crafted<br />for home</strong>
+            <span>Calamba</span>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="intro-section" aria-labelledby="intro-heading">
+        <p class="eyebrow">Thoughtful details, professionally finished</p>
+        <div class="intro-layout">
+          <h2 id="intro-heading">From the first measurement to the final fit, we make every window feel considered.</h2>
+          <p>
+            We tailor curtains, blinds, bedsheets, and sofa covers to the rooms people actually live in.
+            The result is practical, personal, and made to last.
+          </p>
+        </div>
+      </section>
+
+      <section id="services" class="services-section" aria-labelledby="services-heading">
+        <div class="section-heading">
+          <p class="eyebrow">What we make</p>
+          <h2 id="services-heading">Tailored for every room.</h2>
+        </div>
+        <div class="services-grid">
+          <article>
+            <span>01</span>
+            <h3>Window blinds</h3>
+            <p>Light, privacy, and clean lines, measured and fitted for your windows.</p>
+            <a href="#inquire">Inquire <span aria-hidden="true">→</span></a>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Curtains</h3>
+            <p>A softer frame for your room, made in fabrics that suit your style.</p>
+            <a href="#inquire">Inquire <span aria-hidden="true">→</span></a>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Bedsheets</h3>
+            <p>Custom bedsheets that bring a considered finish to your bedroom.</p>
+            <a href="#inquire">Inquire <span aria-hidden="true">→</span></a>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>Sofa covers</h3>
+            <p>A practical, made-to-fit refresh for the pieces you live with.</p>
+            <a href="#inquire">Inquire <span aria-hidden="true">→</span></a>
+          </article>
+        </div>
+      </section>
+
+      <section id="work" class="work-section" aria-labelledby="work-heading">
+        <div class="work-header">
+          <div>
+            <p class="eyebrow">Recent installations</p>
+            <h2 id="work-heading">Made for real homes.</h2>
+          </div>
+          <a class="text-link light-link" href="https://www.facebook.com/homeimprovements101calamba" target="_blank" rel="noreferrer">
+            Follow our work on Facebook <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+        <div class="gallery-shell">
+          <figure class="gallery-feature">
+            <img id="gallery-image" src="assets/images/office-zebra-blinds.jpg" alt="Zebra blinds fitted in a Calamba office" width="1600" height="1200" />
+            <figcaption>
+              <p id="gallery-category">Zebra blinds</p>
+              <h3 id="gallery-title">Executive office, tailored to fit</h3>
+              <span id="gallery-location">Calamba, Laguna</span>
+            </figcaption>
+          </figure>
+          <div class="gallery-controls" aria-label="Portfolio image controls">
+            <button class="gallery-arrow" id="previous-project" type="button" aria-label="Show previous installation">←</button>
+            <p><span id="current-slide">01</span> <span aria-hidden="true">/</span> 08</p>
+            <button class="gallery-arrow" id="next-project" type="button" aria-label="Show next installation">→</button>
+          </div>
+          <div class="gallery-thumbnails" role="tablist" aria-label="Recent installations">
+            <button type="button" role="tab" aria-selected="true" data-project="0"><img src="assets/images/office-zebra-blinds.jpg" alt="" /><span>Office blinds</span></button>
+            <button type="button" role="tab" aria-selected="false" data-project="1"><img src="assets/images/grey-living-room-curtains.jpg" alt="" /><span>Living room curtains</span></button>
+            <button type="button" role="tab" aria-selected="false" data-project="2"><img src="assets/images/gym-zebra-blinds.jpg" alt="" /><span>Gym blinds</span></button>
+            <button type="button" role="tab" aria-selected="false" data-project="3"><img src="assets/images/stairwell-curtains.jpg" alt="" /><span>Stairwell curtains</span></button>
+            <button type="button" role="tab" aria-selected="false" data-project="4"><img src="assets/images/marble-room-roller-blind.jpg" alt="" /><span>Roller blind</span></button>
+            <button type="button" role="tab" aria-selected="false" data-project="5"><img src="assets/images/warm-bedroom-curtains.jpg" alt="" /><span>Bedroom curtains</span></button>
+            <button type="button" role="tab" aria-selected="false" data-project="6"><img src="assets/images/bedroom-curtains.jpg" alt="" /><span>Sheer curtains</span></button>
+            <button type="button" role="tab" aria-selected="false" data-project="7"><img src="assets/images/corner-room-curtains.jpg" alt="" /><span>Corner curtains</span></button>
+          </div>
+        </div>
+      </section>
+
+      <section class="process-section" aria-labelledby="process-heading">
+        <p class="eyebrow">Simple from start to finish</p>
+        <h2 id="process-heading" class="visually-hidden">Our process</h2>
+        <ol>
+          <li><span>01</span><h3>Share your space</h3><p>Tell us what you need and the look you have in mind.</p></li>
+          <li><span>02</span><h3>Get a tailored quote</h3><p>We help you choose the right treatment and prepare your estimate.</p></li>
+          <li><span>03</span><h3>Enjoy the finish</h3><p>We complete the work with care and attention to fit.</p></li>
+        </ol>
+      </section>
+
+      <section id="inquire" class="inquiry-section" aria-labelledby="inquiry-heading">
+        <div class="inquiry-copy">
+          <p class="eyebrow">Your space, your way</p>
+          <h2 id="inquiry-heading">Let's make your home feel more like home.</h2>
+          <p>Send a few details and we’ll get back to you about your custom project.</p>
+          <dl>
+            <div><dt>Phone</dt><dd><a href="tel:+639611744421">+63 961 174 4421</a></dd></div>
+            <div><dt>Location</dt><dd>Dolor Subd, Calamba, Philippines</dd></div>
+          </dl>
+        </div>
+        <form class="inquiry-form" name="inquiry" method="POST" data-netlify="true" netlify-honeypot="website">
+          <input type="hidden" name="form-name" value="inquiry" />
+          <p class="honeypot"><label>Leave this field empty <input name="website" /></label></p>
+          <label>Your name<input name="name" autocomplete="name" required /></label>
+          <label>Mobile number<input name="mobile" type="tel" autocomplete="tel" inputmode="tel" required /></label>
+          <label>What are you looking for?
+            <select name="service" required>
+              <option value="" selected disabled>Select a service</option>
+              <option>Window blinds</option>
+              <option>Curtains</option>
+              <option>Bedsheets</option>
+              <option>Sofa covers</option>
+              <option>Something else</option>
+            </select>
+          </label>
+          <label>Tell us about your space<textarea name="details" rows="5" required></textarea></label>
+          <button class="button button-dark" type="submit">Send inquiry <span aria-hidden="true">→</span></button>
+          <p class="form-note">On a Netlify deployment, inquiries are securely delivered to the site owner.</p>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <a class="wordmark" href="#top"><span>Leonora's</span><small>Blinds &amp; Curtains</small></a>
+      <p>Custom home textiles and window treatments in Calamba.</p>
+      <a class="text-link" href="https://www.facebook.com/homeimprovements101calamba" target="_blank" rel="noreferrer">Facebook <span aria-hidden="true">↗</span></a>
+    </footer>
+  </body>
+</html>
