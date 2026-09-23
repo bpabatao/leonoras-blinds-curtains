@@ -15,8 +15,12 @@ Then open [http://localhost:4173](http://localhost:4173).
 All portfolio imagery is committed in `assets/images/`.
 Each photo is optimized as a local JPEG and does not depend on Facebook or a third-party image host.
 
-## Inquiry form
+## Contact routes
 
-The markup is ready for Netlify Forms.
-Deploy this repository to Netlify to receive form submissions without adding application code.
-For another static host, connect the form to that host's form endpoint before launch.
+The static GitHub Pages site links directly to the business phone and Facebook page.
+There is no server-side inquiry form in this version.
+
+## Experience
+
+The portfolio carousel supports keyboard navigation, touch swipes, and an image lightbox.
+Scroll reveals and image transitions respect the visitor's reduced-motion preference.

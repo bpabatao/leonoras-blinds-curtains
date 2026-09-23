@@ -3,28 +3,28 @@ const projects = [
     image: 'assets/images/office-zebra-blinds.jpg',
     alt: 'Zebra blinds fitted in a Calamba office',
     category: 'Zebra blinds',
-    title: 'Executive office, tailored to fit',
+    title: 'A considered office, with light in balance',
     location: 'Calamba, Laguna',
   },
   {
     image: 'assets/images/grey-living-room-curtains.jpg',
     alt: 'Grey pleated curtains and white sheers in a living room',
     category: 'Curtains',
-    title: 'A soft frame for a modern living room',
+    title: 'Soft layers for a modern living room',
     location: 'Calamba, Laguna',
   },
   {
     image: 'assets/images/gym-zebra-blinds.jpg',
-    alt: 'Zebra blinds installed across gym windows',
+    alt: 'Zebra blinds fitted across the windows of a home gym',
     category: 'Zebra blinds',
-    title: 'Privacy and light control for a home gym',
+    title: 'Light and privacy for a home gym',
     location: 'Calamba, Laguna',
   },
   {
     image: 'assets/images/stairwell-curtains.jpg',
-    alt: 'Layered grey curtains and sheers surrounding a stairwell',
+    alt: 'Layered curtains and sheers surrounding a stairwell',
     category: 'Curtains',
-    title: 'Layered curtains through the stairwell',
+    title: 'A graceful line through the stairwell',
     location: 'Calamba, Laguna',
   },
   {
@@ -36,61 +36,130 @@ const projects = [
   },
   {
     image: 'assets/images/warm-bedroom-curtains.jpg',
-    alt: 'Warm neutral curtains and sheers in a bedroom',
+    alt: 'Warm neutral curtains and sheers framing a bedroom window',
     category: 'Curtains',
     title: 'Warm neutrals, made for rest',
     location: 'Calamba, Laguna',
   },
   {
     image: 'assets/images/bedroom-curtains.jpg',
-    alt: 'Neutral curtains and sheers layered around a bedroom window',
+    alt: 'Neutral curtains and sheer panels layered around a bedroom window',
     category: 'Curtains',
     title: 'A bedroom window, softly finished',
     location: 'Calamba, Laguna',
   },
   {
     image: 'assets/images/corner-room-curtains.jpg',
-    alt: 'Curtains and sheers arranged around a corner room',
+    alt: 'Curtains and sheers arranged around windows in a corner room',
     category: 'Curtains',
-    title: 'A complete curtain treatment for corner windows',
+    title: 'A complete finish for corner windows',
     location: 'Calamba, Laguna',
   },
 ];
 
+const gallery = document.querySelector('.gallery');
+const galleryFeature = document.querySelector('#gallery-feature');
 const galleryImage = document.querySelector('#gallery-image');
 const galleryCategory = document.querySelector('#gallery-category');
 const galleryTitle = document.querySelector('#gallery-title');
 const galleryLocation = document.querySelector('#gallery-location');
 const currentSlide = document.querySelector('#current-slide');
-const projectTabs = [...document.querySelectorAll('[data-project]')];
+const slideTotal = document.querySelector('#slide-total');
+const galleryProgress = document.querySelector('#gallery-progress');
+const galleryLive = document.querySelector('#gallery-live');
+const projectButtons = [...document.querySelectorAll('[data-project]')];
 const previousProject = document.querySelector('#previous-project');
 const nextProject = document.querySelector('#next-project');
 const menuToggle = document.querySelector('.menu-toggle');
 const siteNav = document.querySelector('#site-nav');
+const siteHeader = document.querySelector('#site-header');
+const lightbox = document.querySelector('#gallery-lightbox');
+const lightboxImage = document.querySelector('#lightbox-image');
+const lightboxCaption = document.querySelector('#lightbox-caption');
 let selectedProject = 0;
+let changeToken = 0;
+
+slideTotal.textContent = String(projects.length).padStart(2, '0');
+galleryProgress.setAttribute('aria-valuemax', String(projects.length));
 
 function showProject(index) {
   selectedProject = (index + projects.length) % projects.length;
   const project = projects[selectedProject];
+  const thisChange = ++changeToken;
+  const nextImage = new Image();
+  nextImage.src = project.image;
 
-  galleryImage.src = project.image;
-  galleryImage.alt = project.alt;
-  galleryCategory.textContent = project.category;
-  galleryTitle.textContent = project.title;
-  galleryLocation.textContent = project.location;
-  currentSlide.textContent = String(selectedProject + 1).padStart(2, '0');
+  galleryFeature.classList.add('is-changing');
+  const revealProject = () => {
+    if (thisChange !== changeToken) return;
+    galleryImage.src = project.image;
+    galleryImage.alt = project.alt;
+    galleryCategory.textContent = project.category;
+    galleryTitle.textContent = project.title;
+    galleryLocation.textContent = project.location;
+    currentSlide.textContent = String(selectedProject + 1).padStart(2, '0');
+    galleryFeature.setAttribute('aria-label', `Installation ${selectedProject + 1} of ${projects.length}`);
+    galleryLive.textContent = `${project.category}: ${project.title}, ${project.location}.`;
+    galleryProgress.setAttribute('aria-valuenow', String(selectedProject + 1));
+    galleryProgress.firstElementChild.style.width = `${((selectedProject + 1) / projects.length) * 100}%`;
+    projectButtons.forEach((button, buttonIndex) => {
+      button.setAttribute('aria-pressed', String(buttonIndex === selectedProject));
+    });
+    const activeButton = projectButtons[selectedProject];
+    if (window.matchMedia('(max-width: 680px)').matches) {
+      activeButton.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'nearest', inline: 'nearest' });
+    }
+    if (lightbox.open) updateLightbox(project);
+    requestAnimationFrame(() => galleryFeature.classList.remove('is-changing'));
+  };
 
-  projectTabs.forEach((tab, tabIndex) => {
-    tab.setAttribute('aria-selected', String(tabIndex === selectedProject));
-  });
+  if (nextImage.decode) {
+    nextImage.decode().then(revealProject).catch(revealProject);
+  } else {
+    nextImage.onload = revealProject;
+    nextImage.onerror = revealProject;
+  }
 }
 
-projectTabs.forEach((tab, index) => {
-  tab.addEventListener('click', () => showProject(index));
+function updateLightbox(project) {
+  lightboxImage.src = project.image;
+  lightboxImage.alt = project.alt;
+  lightboxCaption.textContent = `${project.category} | ${project.location}`;
+}
+
+projectButtons.forEach((button, index) => {
+  button.addEventListener('click', () => showProject(index));
 });
 
 previousProject.addEventListener('click', () => showProject(selectedProject - 1));
 nextProject.addEventListener('click', () => showProject(selectedProject + 1));
+
+gallery.addEventListener('keydown', (event) => {
+  if (event.altKey || event.ctrlKey || event.metaKey) return;
+  if (event.key === 'ArrowLeft') {
+    event.preventDefault();
+    showProject(selectedProject - 1);
+  } else if (event.key === 'ArrowRight') {
+    event.preventDefault();
+    showProject(selectedProject + 1);
+  }
+});
+
+let pointerStart;
+galleryFeature.addEventListener('pointerdown', (event) => {
+  if (event.pointerType === 'mouse' && event.button !== 0) return;
+  pointerStart = { x: event.clientX, y: event.clientY };
+});
+galleryFeature.addEventListener('pointerup', (event) => {
+  if (!pointerStart) return;
+  const deltaX = event.clientX - pointerStart.x;
+  const deltaY = event.clientY - pointerStart.y;
+  if (Math.abs(deltaX) > 52 && Math.abs(deltaX) > Math.abs(deltaY) * 1.25) {
+    showProject(selectedProject + (deltaX < 0 ? 1 : -1));
+  }
+  pointerStart = undefined;
+});
+galleryFeature.addEventListener('pointercancel', () => { pointerStart = undefined; });
 
 menuToggle.addEventListener('click', () => {
   const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
@@ -98,9 +167,56 @@ menuToggle.addEventListener('click', () => {
   siteNav.classList.toggle('is-open', !isOpen);
 });
 
+function closeMenu(restoreFocus = false) {
+  menuToggle.setAttribute('aria-expanded', 'false');
+  siteNav.classList.remove('is-open');
+  if (restoreFocus) menuToggle.focus();
+}
+
 siteNav.querySelectorAll('a').forEach((link) => {
-  link.addEventListener('click', () => {
-    menuToggle.setAttribute('aria-expanded', 'false');
-    siteNav.classList.remove('is-open');
-  });
+  link.addEventListener('click', () => closeMenu());
 });
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && menuToggle.getAttribute('aria-expanded') === 'true') {
+    closeMenu(true);
+  }
+});
+
+function openLightbox() {
+  updateLightbox(projects[selectedProject]);
+  if (typeof lightbox.showModal === 'function') lightbox.showModal();
+}
+
+document.querySelector('#open-gallery-image').addEventListener('click', openLightbox);
+document.querySelector('#close-lightbox').addEventListener('click', () => lightbox.close());
+lightbox.addEventListener('click', (event) => {
+  if (event.target === lightbox) lightbox.close();
+});
+
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const revealTargets = [...document.querySelectorAll('[data-reveal]')];
+if (reducedMotion || !('IntersectionObserver' in window)) {
+  revealTargets.forEach((target) => target.classList.add('is-revealed'));
+} else {
+  document.documentElement.classList.add('motion-ready');
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-revealed');
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -5% 0px' });
+  revealTargets.forEach((target) => revealObserver.observe(target));
+}
+
+let headerFrame = 0;
+window.addEventListener('scroll', () => {
+  if (headerFrame) return;
+  headerFrame = requestAnimationFrame(() => {
+    siteHeader.classList.toggle('is-scrolled', window.scrollY > 12);
+    headerFrame = 0;
+  });
+}, { passive: true });
+
+document.querySelector('#current-year').textContent = String(new Date().getFullYear());
