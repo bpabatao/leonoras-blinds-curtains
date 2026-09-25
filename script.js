@@ -69,6 +69,20 @@ const projects = [
     title: 'Office wood-look blinds',
     room: 'Office',
   },
+  {
+    image: 'assets/images/kitchen-zebra-blinds.jpg',
+    alt: 'Zebra blind above the sink in a kitchen',
+    category: 'Zebra blinds',
+    title: 'Kitchen zebra blind',
+    room: 'Kitchen',
+  },
+  {
+    image: 'assets/images/grey-living-room-zebra-blinds.jpg',
+    alt: 'Dark zebra blinds across windows in a living room',
+    category: 'Zebra blinds',
+    title: 'Living room zebra blinds',
+    room: 'Living room',
+  },
 ];
 
 const gallery = document.querySelector('.gallery');

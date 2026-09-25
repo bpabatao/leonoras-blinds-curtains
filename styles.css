@@ -121,7 +121,7 @@ h1 em, h2 em { color: var(--clay); font-weight: 500; }
 .gallery-progress { width: 100%; max-width: 210px; height: 2px; margin: 1.5rem 0 1.8rem; overflow: hidden; background: rgba(250, 248, 243, .2); }
 .gallery-progress span { width: 12.5%; height: 100%; display: block; background: var(--sand); transform-origin: left; transition: width .4s var(--ease-out); }
 .light-link { color: var(--paper-light); }
-.gallery-thumbnails { margin-top: 1.15rem; display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: .65rem; }
+.gallery-thumbnails { margin-top: 1.15rem; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: .65rem; }
 .gallery-thumbnails button { min-width: 0; padding: 0 0 .55rem; border: 0; border-bottom: 1px solid transparent; color: var(--paper-light); background: transparent; text-align: left; opacity: .58; transition: opacity .24s ease, border-color .24s ease; }
 .gallery-thumbnails button[aria-pressed="true"] { border-color: var(--sand); opacity: 1; }
 .gallery-thumbnails button:hover { opacity: 1; }
