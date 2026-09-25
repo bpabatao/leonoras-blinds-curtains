@@ -55,6 +55,20 @@ const projects = [
     title: 'Corner-room curtains',
     room: 'Corner room',
   },
+  {
+    image: 'assets/images/bedroom-blinds.jpg',
+    alt: 'Dark horizontal blinds across the bedroom windows',
+    category: 'Blinds',
+    title: 'Bedroom blinds',
+    room: 'Bedroom',
+  },
+  {
+    image: 'assets/images/office-wood-look-blinds.jpg',
+    alt: 'Wood-look horizontal blinds in an office',
+    category: 'Wood-look blinds',
+    title: 'Office wood-look blinds',
+    room: 'Office',
+  },
 ];
 
 const gallery = document.querySelector('.gallery');

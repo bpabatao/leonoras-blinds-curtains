@@ -121,13 +121,17 @@ h1 em, h2 em { color: var(--clay); font-weight: 500; }
 .gallery-progress { width: 100%; max-width: 210px; height: 2px; margin: 1.5rem 0 1.8rem; overflow: hidden; background: rgba(250, 248, 243, .2); }
 .gallery-progress span { width: 12.5%; height: 100%; display: block; background: var(--sand); transform-origin: left; transition: width .4s var(--ease-out); }
 .light-link { color: var(--paper-light); }
-.gallery-thumbnails { margin-top: 1.15rem; display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: .65rem; }
+.gallery-thumbnails { margin-top: 1.15rem; display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: .65rem; }
 .gallery-thumbnails button { min-width: 0; padding: 0 0 .55rem; border: 0; border-bottom: 1px solid transparent; color: var(--paper-light); background: transparent; text-align: left; opacity: .58; transition: opacity .24s ease, border-color .24s ease; }
 .gallery-thumbnails button[aria-pressed="true"] { border-color: var(--sand); opacity: 1; }
 .gallery-thumbnails button:hover { opacity: 1; }
 .gallery-thumbnails img { width: 100%; aspect-ratio: 1.4; object-fit: cover; transition: transform .45s var(--ease-out); }
 .gallery-thumbnails button:hover img, .gallery-thumbnails button[aria-pressed="true"] img { transform: translateY(-3px); }
 .gallery-thumbnails button > span { padding-top: .45rem; display: block; overflow: hidden; color: rgba(250, 248, 243, .82); font-size: .64rem; text-overflow: ellipsis; white-space: nowrap; }
+
+@media (max-width: 1180px) and (min-width: 681px) {
+  .gallery-thumbnails { grid-template-columns: repeat(5, minmax(0, 1fr)); row-gap: 1rem; }
+}
 
 .process-section { max-width: var(--content-width); margin: auto; padding: clamp(6rem, 10vw, 10rem) var(--page-gutter); display: grid; grid-template-columns: minmax(0, .72fr) minmax(0, 1.28fr); gap: clamp(3rem, 9vw, 9rem); }
 .process-intro h2 { font-size: clamp(3.5rem, 5vw, 6rem); }
@@ -197,7 +201,7 @@ h1 em, h2 em { color: var(--clay); font-weight: 500; }
   .service-card:nth-child(4) { border-bottom: 0; }
   .gallery-stage { grid-template-columns: minmax(0, 1.2fr) minmax(200px, .8fr); gap: 2rem; }
   .gallery-feature, .gallery-feature > img { min-height: 470px; }
-  .gallery-thumbnails { grid-template-columns: repeat(4, minmax(0, 1fr)); row-gap: 1rem; }
+  .gallery-thumbnails { grid-template-columns: repeat(5, minmax(0, 1fr)); row-gap: 1rem; }
   .process-section { grid-template-columns: minmax(0, .7fr) minmax(0, 1.3fr); gap: 3rem; }
   .site-footer { grid-template-columns: auto 1fr auto; gap: 1.3rem; }
   .copyright { grid-column: 2 / 4; justify-self: end; }
